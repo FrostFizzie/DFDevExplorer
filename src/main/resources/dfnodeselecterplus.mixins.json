@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.FrostFizzie.dfnodeselecterplus.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+  ],
+  "client": [
+    "client.MixinClientPlayNetworkHandler",
+    "client.MixinServerPlayNetworkHandler",
+    "client.MixinScreenHandler"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
