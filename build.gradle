@@ -27,7 +27,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "com.ptsmods:devlogin:3.5"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation include("net.kyori:adventure-platform-fabric:5.14.1")
+    modImplementation include("net.kyori:adventure-platform-fabric:5.14.2")
 }
 
 processResources {

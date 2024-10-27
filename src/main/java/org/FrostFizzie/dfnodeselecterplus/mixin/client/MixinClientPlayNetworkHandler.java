@@ -1,6 +1,5 @@
 package org.FrostFizzie.dfnodeselecterplus.mixin.client;
 
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.component.DataComponentTypes;
@@ -10,6 +9,7 @@ import net.minecraft.network.packet.s2c.play.CloseScreenS2CPacket;
 import net.minecraft.network.packet.s2c.play.InventoryS2CPacket;
 import net.minecraft.network.packet.s2c.play.OpenScreenS2CPacket;
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;
+import net.minecraft.server.network.ServerLoginNetworkHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import org.FrostFizzie.dfnodeselecterplus.Node;
@@ -32,7 +32,7 @@ public abstract class MixinClientPlayNetworkHandler {
         if (packet.getContents().size() == 45 && inventoryName.getString().equals("Select Node") && client.player.getScoreboard() != null) {
             List<ItemStack> stacks = packet.getContents();
             Node node = NodesList.stream().filter(search -> search.getIP().equalsIgnoreCase("")).count() >=1 ? NodesList.stream().filter(search -> search.getIP().equalsIgnoreCase("")).findFirst().get() : NodesList.get(0);
-            stacks.set(8, node.getNodeAsItem());
+            stacks.set(8, node.getCompleteStack());
             InventoryS2CPacket inventoryPacket = new InventoryS2CPacket(packet.getSyncId(), packet.getRevision(), (DefaultedList<ItemStack>) packet.getContents(), packet.getCursorStack());
             return inventoryPacket;
         }
@@ -46,4 +46,5 @@ public abstract class MixinClientPlayNetworkHandler {
     public void onCloseScreen(CloseScreenS2CPacket packet, CallbackInfo ci) {
         inventoryName = null;
     }
+
 }

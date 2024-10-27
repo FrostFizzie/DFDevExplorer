@@ -61,7 +61,7 @@ public abstract class MixinScreenHandler {
     }
     private Optional<Node> getCurrentNode(ItemStack item) {
         return NodesList.stream()
-                .filter(node -> ItemStack.areEqual(node.getNodeAsItem(), item))
+                .filter(node -> ItemStack.areEqual(node.getCompleteStack(), item))
                 .findFirst();
     }
 
@@ -74,7 +74,7 @@ public abstract class MixinScreenHandler {
         int currentNodeIndex = NodesList.indexOf(currentNode);
         int newIndex = (currentNodeIndex + direction + NodesList.size()) % NodesList.size();
 
-        ItemStack newNodeItem = NodesList.get(newIndex).getNodeAsItem();
+        ItemStack newNodeItem = NodesList.get(newIndex).getCompleteStack();
         if (!this.slots.get(slotIndex).getStack().equals(newNodeItem)) {
             this.setStackInSlot(slotIndex, this.getRevision(), newNodeItem);
         }
@@ -90,7 +90,7 @@ public abstract class MixinScreenHandler {
         client.getNetworkHandler().sendCommand("server " + currentNode.getID());
 
         ci.cancel();
-        closePlayerScreens(player);
+        closePlayerScreens();
     }
 
     private void playClickSound() {
@@ -99,7 +99,7 @@ public abstract class MixinScreenHandler {
         }
     }
 
-    private void closePlayerScreens(PlayerEntity player) {
+    private void closePlayerScreens() {
         if (client.player != null) {
             client.player.closeHandledScreen();
             client.player.closeScreen();

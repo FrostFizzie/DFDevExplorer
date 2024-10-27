@@ -33,7 +33,7 @@ public class Node {
         this.addr = Addr;
         this.id = Id;
     }
-    public ItemStack getNodeAsItem() {
+    public ItemStack getCompleteStack() {
         ItemStack item = new ItemStack(getIcon(), 1);
         item.set(DataComponentTypes.CUSTOM_NAME, getName());
         List<Text> lore = new ArrayList<>();

@@ -5,6 +5,7 @@ import net.minecraft.client.network.ClientCommonNetworkHandler;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.ClickSlotC2SPacket;
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;
@@ -26,7 +27,12 @@ public abstract class MixinServerPlayNetworkHandler {
     public void onClickSlot(Packet<?> packet, CallbackInfo ci) {
         if (packet instanceof ClickSlotC2SPacket) {
             ClickSlotC2SPacket clickSlotC2SPacket = (ClickSlotC2SPacket) packet;
-            if (client.player.currentScreenHandler instanceof GenericContainerScreenHandler && clickSlotC2SPacket.getSlot() == 8 && inventoryName.getString().equals("Select Node")) {
+            ScreenHandler screenHandler = client.player.currentScreenHandler;
+            if (screenHandler instanceof GenericContainerScreenHandler && clickSlotC2SPacket.getSlot() == 8 && inventoryName.getString().equals("Select Node")) {
+                if (!NodesList.stream()
+                        .anyMatch(node -> ItemStack.areEqual(node.getCompleteStack(), screenHandler.getSlot(clickSlotC2SPacket.getSlot()).getStack()))) {
+                    return;
+                }
                 ci.cancel();
             }
         }

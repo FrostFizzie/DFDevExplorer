@@ -23,8 +23,8 @@ public class DfnodeselecterplusClient implements ClientModInitializer {
     public void onInitializeClient() {
         NodesList.add(new Node(Items.STRUCTURE_BLOCK, "<red>Node Beta", "<red>Project", "", "beta"));
         NodesList.add(new Node(Items.COMMAND_BLOCK, "<#f7b77c>Node Dev", "<#f7b77c>Parliament", "", "dev"));
-        NodesList.add(new Node(Items.CHAIN_COMMAND_BLOCK, "<#9afcd7>Node Dev 2", "<#9afcd7>Palace", "", "dev2"));
-        NodesList.add(new Node(Items.REPEATING_COMMAND_BLOCK, "<#9251f5>Node Dev 3", "<#9251f5>Forest", "", "dev3"));
+        NodesList.add(new Node(Items.REPEATING_COMMAND_BLOCK, "<#9251f5>Node Dev 2", "<#9251f5>Palace", "", "dev2"));
+        NodesList.add(new Node(Items.CHAIN_COMMAND_BLOCK, "<#9afcd7>Node Dev 3", "<#9afcd7>Forest", "", "dev3"));
     }
 
     public static Text miniMessage(String message) {
