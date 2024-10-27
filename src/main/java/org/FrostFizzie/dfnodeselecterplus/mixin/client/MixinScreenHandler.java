@@ -1,8 +1,6 @@
 package org.FrostFizzie.dfnodeselecterplus.mixin.client;
 
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
-import net.minecraft.client.font.TextRenderer;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.GenericContainerScreenHandler;

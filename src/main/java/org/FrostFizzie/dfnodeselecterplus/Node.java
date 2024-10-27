@@ -1,23 +1,16 @@
 package org.FrostFizzie.dfnodeselecterplus;
 
-import net.kyori.adventure.platform.fabric.FabricClientAudiences;
-import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.LoreComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.scoreboard.Scoreboard;
-import net.minecraft.scoreboard.ScoreboardDisplaySlot;
+
 import net.minecraft.text.Text;
 
-import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.FrostFizzie.dfnodeselecterplus.client.DfnodeselecterplusClient.client;
 import static org.FrostFizzie.dfnodeselecterplus.client.DfnodeselecterplusClient.miniMessage;
 
 public class Node {

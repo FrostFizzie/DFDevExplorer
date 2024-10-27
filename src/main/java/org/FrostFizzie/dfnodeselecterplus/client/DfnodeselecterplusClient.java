@@ -1,13 +1,11 @@
 package org.FrostFizzie.dfnodeselecterplus.client;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.kyori.adventure.platform.fabric.FabricClientAudiences;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.Items;
-import net.minecraft.network.packet.c2s.play.ClickSlotC2SPacket;
 import net.minecraft.text.Text;
 import org.FrostFizzie.dfnodeselecterplus.Node;
 
