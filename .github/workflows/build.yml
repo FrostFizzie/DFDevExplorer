@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-java@v2  # Using v2 for better compatibility
         with:
           java-version: ${{ matrix.java }}
-        
+          distribution: 'adoptopenjdk'
       - name: make gradle wrapper executable
         if: ${{ runner.os != 'Windows' }}
         run: chmod +x ./gradlew
