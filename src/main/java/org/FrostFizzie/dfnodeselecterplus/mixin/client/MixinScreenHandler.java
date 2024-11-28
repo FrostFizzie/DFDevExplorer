@@ -14,11 +14,13 @@ import org.FrostFizzie.dfnodeselecterplus.Node;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.FrostFizzie.dfnodeselecterplus.client.DfnodeselecterplusClient.*;
@@ -32,6 +34,7 @@ public abstract class MixinScreenHandler {
 
     @Shadow public abstract void setStackInSlot(int slot, int revision, ItemStack stack);
 
+    @Unique
     private final SoundEvent clickSound = SoundEvent.of(Identifier.of("minecraft", "block.wooden_button.click_on"));
 
     @Inject(method = "onSlotClick", at = @At("HEAD"), cancellable = true)
@@ -54,19 +57,22 @@ public abstract class MixinScreenHandler {
             } else {
                 handleNodeSelection(player, currentNode, ci);
             }
-        } catch (IndexOutOfBoundsException | NoSuchElementException e) {
+        } catch (IndexOutOfBoundsException | NoSuchElementException ignored) {
         }
     }
+    @Unique
     private Optional<Node> getCurrentNode(ItemStack item) {
         return NodesList.stream()
                 .filter(node -> ItemStack.areEqual(node.getCompleteStack(), item))
                 .findFirst();
     }
 
+    @Unique
     private boolean isRightClick(SlotActionType actionType, int button) {
         return button == 1 && (actionType == SlotActionType.PICKUP || actionType == SlotActionType.QUICK_MOVE);
     }
 
+    @Unique
     private void handleRightClick(int slotIndex, Node currentNode, SlotActionType actionType, CallbackInfo ci) {
         int direction = (actionType == SlotActionType.PICKUP) ? 1 : -1;
         int currentNodeIndex = NodesList.indexOf(currentNode);
@@ -81,22 +87,24 @@ public abstract class MixinScreenHandler {
         playClickSound();
     }
 
+    @Unique
     private void handleNodeSelection(PlayerEntity player, Node currentNode, CallbackInfo ci) {
-        String plainName = PlainTextComponentSerializer.plainText().serialize(currentNode.getName().asComponent());
-        player.sendMessage(miniMessage("<green><bold>»</bold></green> <gray>Sending you to " + plainName + "...</gray>"));
-
-        client.getNetworkHandler().sendCommand("server " + currentNode.getID());
+        String plainName = PlainTextComponentSerializer.plainText().serialize(component(currentNode.getName()));
+        player.sendMessage(miniMessage("<green><bold>»</bold></green> <gray>Sending you to " + plainName + "...</gray>"), false);
+        Objects.requireNonNull(client.getNetworkHandler()).sendCommand("server " + currentNode.getID());
 
         ci.cancel();
         closePlayerScreens();
     }
 
+    @Unique
     private void playClickSound() {
         if (client.player != null) {
             client.player.playSound(clickSound, 2f, 1.74f);
         }
     }
 
+    @Unique
     private void closePlayerScreens() {
         if (client.player != null) {
             client.player.closeHandledScreen();

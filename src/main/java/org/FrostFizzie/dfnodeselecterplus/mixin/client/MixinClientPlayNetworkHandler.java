@@ -14,20 +14,23 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
+import java.util.Objects;
 
 import static org.FrostFizzie.dfnodeselecterplus.client.DfnodeselecterplusClient.*;
 
 @Mixin(ClientPlayNetworkHandler.class)
 public abstract class MixinClientPlayNetworkHandler {
 
-    @ModifyVariable(method = "onInventory", at = @At(value = "HEAD"))
+    @ModifyVariable(method = "onInventory", at = @At(value = "HEAD"), argsOnly = true)
     public InventoryS2CPacket onInventory(InventoryS2CPacket packet) {
-        if (packet.getContents().size() == 45 && inventoryName.getString().equals("Select Node") && client.player.getScoreboard() != null) {
+        if (inventoryName == null) {
+            return packet;
+        }
+        if (packet.getContents().size() == 45 && inventoryName.getString().equals("Select Node") && Objects.requireNonNull(client.player).getScoreboard() != null) {
             List<ItemStack> stacks = packet.getContents();
-            Node node = NodesList.stream().filter(search -> search.getIP().equalsIgnoreCase("")).count() >=1 ? NodesList.stream().filter(search -> search.getIP().equalsIgnoreCase("")).findFirst().get() : NodesList.get(0);
+            Node node = NodesList.stream().anyMatch(search -> search.getIP().equalsIgnoreCase("")) ? NodesList.stream().filter(search -> search.getIP().equalsIgnoreCase("")).findFirst().get() : NodesList.getFirst();
             stacks.set(8, node.getCompleteStack());
-            InventoryS2CPacket inventoryPacket = new InventoryS2CPacket(packet.getSyncId(), packet.getRevision(), (DefaultedList<ItemStack>) packet.getContents(), packet.getCursorStack());
-            return inventoryPacket;
+            return new InventoryS2CPacket(packet.getSyncId(), packet.getRevision(), (DefaultedList<ItemStack>) packet.getContents(), packet.getCursorStack());
         }
         return packet;
     }

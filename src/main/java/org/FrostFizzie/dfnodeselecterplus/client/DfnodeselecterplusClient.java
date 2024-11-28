@@ -1,7 +1,9 @@
 package org.FrostFizzie.dfnodeselecterplus.client;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.kyori.adventure.platform.fabric.FabricClientAudiences;
+
+import net.kyori.adventure.platform.modcommon.MinecraftClientAudiences;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minecraft.client.MinecraftClient;
@@ -26,6 +28,10 @@ public class DfnodeselecterplusClient implements ClientModInitializer {
     }
 
     public static Text miniMessage(String message) {
-        return FabricClientAudiences.of().toNative(MiniMessage.miniMessage().deserialize(message).decorationIfAbsent(TextDecoration.ITALIC, TextDecoration.State.FALSE));
+        return MinecraftClientAudiences.of().asNative(MiniMessage.miniMessage().deserialize(message).decorationIfAbsent(TextDecoration.ITALIC, TextDecoration.State.FALSE));
+
+    }
+    public static Component component(Text message) {
+        return MinecraftClientAudiences.of().asAdventure(message);
     }
 }
