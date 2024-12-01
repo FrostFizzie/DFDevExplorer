@@ -6,8 +6,16 @@
   "description": "Adds the developer nodes on mcdiamondfire via the node selector menu allowing you a visual way to join the dev nodes if you have access.",
   "authors": ["FrostFizzie"],
   "contact": {},
+  "custom": {
+    "modmenu": {
+      "links": {
+        "Source": "https://github.com/FrostFizzie/DFDevExplorer",
+        "Issues": "https://github.com/FrostFizzie/DFDevExplorer/issues"
+      }
+    }
+  },
   "license": "MIT",
-  "icon": "assets/DFDevExplorer/icon.png",
+  "icon": "assets/dfdevexplorer/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
