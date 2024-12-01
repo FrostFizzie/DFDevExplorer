@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "id": "dfnodeselecterplus",
+  "id": "dfdevexplorer",
   "version": "${version}",
-  "name": "DFNodeSelecter+",
-  "description": "",
-  "authors": [],
+  "name": "DFDevExplorer",
+  "description": "Adds the developer nodes on mcdiamondfire via the node selector menu allowing you a visual way to join the dev nodes if you have access.",
+  "authors": ["FrostFizzie"],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/dfnodeselecterplus/icon.png",
+  "icon": "assets/DFDevExplorer/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
-      "org.FrostFizzie.dfnodeselecterplus.client.DfnodeselecterplusClient"
+      "org.FrostFizzie.DFDevExplorer.client.DFDevExplorerClient"
     ],
     "main": [
-      "org.FrostFizzie.dfnodeselecterplus.Dfnodeselecterplus"
+      "org.FrostFizzie.DFDevExplorer.DFDevExplorer"
     ]
   },
   "mixins": [
-    "dfnodeselecterplus.mixins.json"
+    "DFDevExplorer.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",

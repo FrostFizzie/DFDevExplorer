@@ -1,4 +1,4 @@
-package org.FrostFizzie.dfnodeselecterplus.mixin.client;
+package org.FrostFizzie.DFDevExplorer.mixin.client;
 
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.item.ItemStack;
@@ -6,7 +6,7 @@ import net.minecraft.network.packet.s2c.play.CloseScreenS2CPacket;
 import net.minecraft.network.packet.s2c.play.InventoryS2CPacket;
 import net.minecraft.network.packet.s2c.play.OpenScreenS2CPacket;
 import net.minecraft.util.collection.DefaultedList;
-import org.FrostFizzie.dfnodeselecterplus.Node;
+import org.FrostFizzie.DFDevExplorer.Node;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 import java.util.Objects;
 
-import static org.FrostFizzie.dfnodeselecterplus.client.DfnodeselecterplusClient.*;
+import static org.FrostFizzie.DFDevExplorer.client.DFDevExplorerClient.*;
 
 @Mixin(ClientPlayNetworkHandler.class)
 public abstract class MixinClientPlayNetworkHandler {

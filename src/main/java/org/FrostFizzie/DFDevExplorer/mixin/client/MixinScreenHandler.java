@@ -1,4 +1,4 @@
-package org.FrostFizzie.dfnodeselecterplus.mixin.client;
+package org.FrostFizzie.DFDevExplorer.mixin.client;
 
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,7 +10,7 @@ import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
-import org.FrostFizzie.dfnodeselecterplus.Node;
+import org.FrostFizzie.DFDevExplorer.Node;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -23,7 +23,7 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
 
-import static org.FrostFizzie.dfnodeselecterplus.client.DfnodeselecterplusClient.*;
+import static org.FrostFizzie.DFDevExplorer.client.DFDevExplorerClient.*;
 
 @Mixin(ScreenHandler.class)
 public abstract class MixinScreenHandler {

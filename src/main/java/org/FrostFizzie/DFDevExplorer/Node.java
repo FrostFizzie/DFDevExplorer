@@ -1,4 +1,4 @@
-package org.FrostFizzie.dfnodeselecterplus;
+package org.FrostFizzie.DFDevExplorer;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.component.DataComponentTypes;
@@ -10,8 +10,9 @@ import net.minecraft.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-import static org.FrostFizzie.dfnodeselecterplus.client.DfnodeselecterplusClient.miniMessage;
+import static org.FrostFizzie.DFDevExplorer.client.DFDevExplorerClient.miniMessage;
 
 public class Node {
     Item icon;
@@ -32,7 +33,7 @@ public class Node {
         List<Text> lore = new ArrayList<>();
         lore.add(getTheme());
         lore.add(Text.empty());
-        if (!MinecraftClient.getInstance().getNetworkHandler().getConnection().getAddressAsString(true).substring(MinecraftClient.getInstance().getNetworkHandler().getConnection().getAddressAsString(true).length() - 20).equals(getIP())) {
+        if (!Objects.requireNonNull(MinecraftClient.getInstance().getNetworkHandler()).getConnection().getAddressAsString(true).substring(MinecraftClient.getInstance().getNetworkHandler().getConnection().getAddressAsString(true).length() - 20).equals(getIP())) {
             lore.add(miniMessage("<dark_gray><italic>Information cannot be viewed"));
             lore.add(miniMessage("<dark_gray><italic>from your current node."));
             lore.add(Text.empty());

@@ -1,4 +1,4 @@
-package org.FrostFizzie.dfnodeselecterplus.mixin.client;
+package org.FrostFizzie.DFDevExplorer.mixin.client;
 
 import net.minecraft.client.network.ClientCommonNetworkHandler;
 import net.minecraft.item.ItemStack;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
 
-import static org.FrostFizzie.dfnodeselecterplus.client.DfnodeselecterplusClient.*;
+import static org.FrostFizzie.DFDevExplorer.client.DFDevExplorerClient.*;
 
 @Mixin(ClientCommonNetworkHandler.class)
 public abstract class MixinServerPlayNetworkHandler {

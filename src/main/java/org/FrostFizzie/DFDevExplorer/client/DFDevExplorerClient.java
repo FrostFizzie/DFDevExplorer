@@ -1,4 +1,4 @@
-package org.FrostFizzie.dfnodeselecterplus.client;
+package org.FrostFizzie.DFDevExplorer.client;
 
 import net.fabricmc.api.ClientModInitializer;
 
@@ -9,13 +9,13 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.Items;
 import net.minecraft.text.Text;
-import org.FrostFizzie.dfnodeselecterplus.Node;
+import org.FrostFizzie.DFDevExplorer.Node;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class DfnodeselecterplusClient implements ClientModInitializer {
+public class DFDevExplorerClient implements ClientModInitializer {
         public static List<Node> NodesList = new ArrayList<>();
         public static Text inventoryName;
         public static MinecraftClient client = MinecraftClient.getInstance();
