@@ -1,0 +1,4 @@
+{
+  "DFDevExplorer.toast.packetException.title" : "Heyo! Packet error",
+  "DFDevExplorer.toast.packetException.description" : "This was suppressed \nbut rejoining is recommended"
+}
