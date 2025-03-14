@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.10-SNAPSHOT'
+    id 'fabric-loom' version '1.8-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -27,20 +27,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "com.ptsmods:devlogin:3.5"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-        modImplementation include("net.kyori:adventure-platform-fabric:6.1.0") {
-            exclude group: "net.fabricmc.fabric-api" // Avoid bundling Fabric API
-        }
-}
-
-sourceSets {
-    main {
-        java.srcDirs = ['src/main/java']
-        resources.srcDirs = ['src/main/resources']
-    }
-    test {
-        java.srcDirs = ['src/test/java']
-        resources.srcDirs = ['src/test/resources']
-    }
+    modImplementation include("net.kyori:adventure-platform-fabric:6.1.0")
 }
 
 processResources {
