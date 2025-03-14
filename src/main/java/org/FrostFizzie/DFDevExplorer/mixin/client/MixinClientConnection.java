@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ClientConnection.class)
-public class MixinClientConnection {
+public abstract class MixinClientConnection {
     @Inject(method = "handlePacket", at = @At("HEAD"), cancellable = true)
     private static void handlePacket(Packet<?> packet, PacketListener listener, CallbackInfo ci) {
         Features.handlePacket(packet, listener, ci);
